@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Product Scraper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>E-commerce Product Scraper</h1>
+            <p>Extract product information and export to CSV</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="url-input">
+                    <label for="websiteUrl">Website URL:</label>
+                    <input type="url" id="websiteUrl" placeholder="https://example-store.com" required>
+                    <button id="scrapeBtn">Scrape Products</button>
+                </div>
+
+                <div class="manual-input">
+                    <h3>Or Add Product Manually:</h3>
+                    <div class="form-grid">
+                        <input type="text" id="productName" placeholder="Product Name" required>
+                        <input type="number" id="productPrice" placeholder="Price" step="0.01" required>
+                        <input type="number" id="productRating" placeholder="Rating (1-5)" min="1" max="5" step="0.1" required>
+                        <input type="text" id="productCategory" placeholder="Category">
+                        <input type="url" id="productImage" placeholder="Image URL">
+                        <textarea id="productDescription" placeholder="Product Description"></textarea>
+                    </div>
+                    <button id="addProductBtn">Add Product</button>
+                </div>
+            </div>
+
+            <div class="status-section">
+                <div id="statusMessage" class="status-message"></div>
+                <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Scraping products...</span>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="results-header">
+                    <h3>Extracted Products (<span id="productCount">0</span>)</h3>
+                    <div class="export-controls">
+                        <button id="exportCsvBtn" disabled>Export to CSV</button>
+                        <button id="clearDataBtn">Clear All</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="productsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Rating</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Image URL</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <!-- Products will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3>Demo Data</h3>
+                <button id="loadDemoBtn">Load Sample Products</button>
+                <p class="demo-note">Load sample product data to test CSV export functionality</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
